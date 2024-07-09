@@ -3,6 +3,7 @@ require('dotenv').config();
 const express     = require('express');
 const bodyParser  = require('body-parser');
 const cors        = require('cors');
+const mongoose    = require('mongoose');
 
 const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
@@ -16,6 +17,13 @@ app.use(cors({origin: '*'})); //For FCC testing purposes only
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+const mongoURI = process.env.DB;
+
+mongoose
+  .connect(mongoURI)
+  .then(() => console.log('MongoDB connected'))
+  .catch((err) => console.error(err));
 
 //Sample front-end
 app.route('/b/:board/')
