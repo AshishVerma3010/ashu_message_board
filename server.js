@@ -4,6 +4,7 @@ const express     = require('express');
 const bodyParser  = require('body-parser');
 const cors        = require('cors');
 const mongoose    = require('mongoose');
+const helmet      = require('helmet');
 
 const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
@@ -17,6 +18,13 @@ app.use(cors({origin: '*'})); //For FCC testing purposes only
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(helmet.dnsPrefetchControl());
+app.use(helmet.frameguard({
+  action: 'sameorigin'
+}));
+app.use(helmet({
+  referrerPolicy: { policy: 'same-origin' }
+}));
 
 const mongoURI = process.env.DB;
 
