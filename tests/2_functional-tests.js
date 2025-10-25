@@ -10,7 +10,7 @@ chai.use(chaiHttp);
 
 suite('Functional Tests', function() {
   let threadId; // To store the ID of a created thread for subsequent tests
-  let replyId; // To store the ID of a created reply for subsequent tests
+  let replyId; // To store the ID of a created reply for subsequent tests 
 
   suite('Threads API Tests', function() {
     test('Creating a new thread: POST request to /api/threads/{board}', function(done) {

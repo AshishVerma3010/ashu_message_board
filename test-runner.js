@@ -22,7 +22,6 @@
 *
 *
 *
-*
 */
 
 var analyser = require('./assertion-analyser');
