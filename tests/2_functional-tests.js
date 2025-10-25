@@ -6,7 +6,8 @@ const { suite, test } = require('mocha');
 
 const Thread = require('../models/thread');
 
-chai.use(chaiHttp);
+chai.use(chaiHttp); // ✅ correct
+
 
 suite('Functional Tests', function() {
   let threadId; // To store the ID of a created thread for subsequent tests
